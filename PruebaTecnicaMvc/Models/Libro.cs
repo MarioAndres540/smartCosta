@@ -21,7 +21,7 @@ namespace PruebaTecnicaMvc.Models
         public DateTime FechaPublicacion { get; set; }
 
         [Required(ErrorMessage = "El precio es obligatorio")]
-        [Range(0.01, 10000.00, ErrorMessage = "El precio debe ser mayor a 0")]
+        [Range(0.01, 99999999.99, ErrorMessage = "El precio debe ser mayor a 0 y válido")]
         public decimal Precio { get; set; }
     }
 }

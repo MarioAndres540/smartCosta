@@ -25,7 +25,7 @@
             <td>@Html.DisplayFor(modelItem => item.Titulo)</td>
             <td>@Html.DisplayFor(modelItem => item.Autor)</td>
             <td>@Html.DisplayFor(modelItem => item.FechaPublicacion)</td>
-            <td>@Html.DisplayFor(modelItem => item.Precio)</td>
+            <td>@item.Precio.ToString("N0", new System.Globalization.CultureInfo("es-CO"))</td>
         </tr>
 }
     </tbody>
