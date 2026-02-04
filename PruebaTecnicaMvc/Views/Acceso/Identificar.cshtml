@@ -1,0 +1,45 @@
+@model PruebaTecnicaMvc.Models.Usuario
+
+@{
+    Layout = null; // Pantalla limpia sin el layout general
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Identificación - Smart Costa</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        body { background-color: #f8f9fa; }
+        .login-container { max-width: 400px; margin-top: 100px; padding: 30px; background: white; border-radius: 10px; box-shadow: 0px 0px 20px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="login-container">
+            <div class="text-center mb-4">
+                <img src="~/images/smartcosta.png" alt="Logo" style="max-width: 150px; background-color: black; padding: 10px; border-radius: 5px;" />
+                <h3 class="mt-3">Bienvenido</h3>
+                <p class="text-muted">Por favor identifícate para continuar</p>
+            </div>
+            
+            <form asp-action="Identificar">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="Nombre" class="form-label"></label>
+                    <input asp-for="Nombre" class="form-control" placeholder="Tu nombre completo" />
+                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="ejemplo@correo.com" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

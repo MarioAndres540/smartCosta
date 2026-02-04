@@ -1,0 +1,36 @@
+@model PruebaTecnicaMvc.Models.Publicacion
+
+@{
+    ViewData["Title"] = "Crear Publicación";
+}
+
+<h1>Crear Publicación</h1>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Crear">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Titulo" class="control-label"></label>
+                <input asp-for="Titulo" class="form-control" placeholder="Título de la publicación" />
+                <span asp-validation-for="Titulo" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mb-3">
+                <label asp-for="Contenido" class="control-label"></label>
+                <textarea asp-for="Contenido" class="form-control" rows="5" placeholder="Escribe aquí el contenido..."></textarea>
+                <span asp-validation-for="Contenido" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Publicar" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

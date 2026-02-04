@@ -48,6 +48,72 @@ namespace PruebaTecnicaMvc.Migrations
 
                     b.ToTable("Libros");
                 });
+
+            modelBuilder.Entity("PruebaTecnicaMvc.Models.Publicacion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Contenido")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FechaPublicacion")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UsuarioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UsuarioId");
+
+                    b.ToTable("Publicaciones");
+                });
+
+            modelBuilder.Entity("PruebaTecnicaMvc.Models.Usuario", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Usuarios");
+                });
+
+            modelBuilder.Entity("PruebaTecnicaMvc.Models.Publicacion", b =>
+                {
+                    b.HasOne("PruebaTecnicaMvc.Models.Usuario", "Usuario")
+                        .WithMany("Publicaciones")
+                        .HasForeignKey("UsuarioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Usuario");
+                });
+
+            modelBuilder.Entity("PruebaTecnicaMvc.Models.Usuario", b =>
+                {
+                    b.Navigation("Publicaciones");
+                });
 #pragma warning restore 612, 618
         }
     }
