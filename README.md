@@ -57,3 +57,30 @@ Si necesitas cambiar el servidor, edita la sección `ConnectionStrings`:
 *   **Controllers/LibrosController.cs**: Controlador para gestionar el listado y creación de libros.
 *   **Views/Libros/**: Vistas Razor para `Index` y `Crear`, utilizando estilos de Bootstrap.
 *   **Data/AppDbContext.cs**: Contexto de base de datos de Entity Framework.
+
+## Configuración en un Nuevo Computador
+
+Si deseas ejecutar este proyecto en otra máquina, sigue estos pasos:
+
+### 1. Prerrequisitos
+*   Instalar [.NET SDK 10.0](https://dotnet.microsoft.com/download/dotnet/10.0).
+*   Instalar [SQL Server Express](https://www.microsoft.com/sql-server/sql-server-downloads) y [SSMS](https://learn.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
+
+### 2. Restaurar Base de Datos
+Tienes dos opciones:
+*   **Opción A (Recomendada)**: Abrir SSMS, clic derecho en "Databases" -> "Restore Database" y seleccionar el archivo `.bak`.
+*   **Opción B**: Ejecutar el script `database_setup.sql` para crear las tablas manualmente.
+
+### 3. Configurar Cadena de Conexión
+1.  Abre el proyecto en la nueva máquina.
+2.  Edita `PruebaTecnicaMvc/appsettings.json`.
+3.  Cambia el valor de `DefaultConnection` para que apunte al nombre del servidor SQL de la nueva máquina.
+
+### 4. Ejecutar
+*   **Desde Visual Studio**: Abre el archivo `PruebaTecnicaMvc.csproj`, espera a que restaure los paquetes NuGet y presiona **F5**.
+*   **Desde Terminal / Antigravity**:
+    ```bash
+    cd PruebaTecnicaMvc
+    dotnet restore
+    dotnet watch
+    ```
